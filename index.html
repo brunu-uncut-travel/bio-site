@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>brunu_uncut_travel</title>
-  <meta name="description" content="brunu_uncut_travel — Travel Leader for families & groups. Trip planning + UGC/brand collaborations." />
+  <meta name="description" content="brunu_uncut_travel — Travel Leader & UGC Creator. Turning travel into experiences." />
   <meta name="theme-color" content="#0b0f12" />
 
   <!--
@@ -12,9 +12,7 @@
     - Background image: airplane_bg.jpg
     - Profile image:   profile.jpg
 
-    If your profile file name has spaces (e.g., "Foto de perfil.jpg"), either:
-      A) rename it to profile.jpg (recommended), or
-      B) keep it as-is and update --profile below accordingly (URL-encoded spaces).
+    Tip: avoid spaces/accents in filenames.
   -->
 
   <style>
@@ -27,6 +25,7 @@
       --ui2: rgba(255,255,255,.88);
       --text:#0c0f12;
       --muted:#5f6a73;
+      --line: rgba(12,15,18,.10);
 
       /* Accents */
       --mint1:#19c4a3;
@@ -153,17 +152,26 @@
       text-shadow: 0 6px 22px rgba(0,0,0,.35);
     }
 
-    .identity{
-      color: rgba(255,255,255,.93);
+    /* HERO (no duplicates) */
+    .heroRole{
+      margin-top: 2px;
+      color: rgba(255,255,255,.94);
       font-size: 14px;
-      font-weight: 800;
-      line-height: 1.35;
-      max-width: 38ch;
-      text-shadow: 0 6px 20px rgba(0,0,0,.40);
+      font-weight: 900;
+      letter-spacing: .2px;
+      text-shadow: 0 6px 18px rgba(0,0,0,.38);
+    }
+    .heroSig{
+      color: rgba(255,255,255,.84);
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-top: -2px;
+      text-shadow: 0 6px 18px rgba(0,0,0,.40);
     }
 
     /* Social icons */
-    .social{ display:flex; gap:12px; margin-top: 8px; }
+    .social{ display:flex; gap:12px; margin-top: 10px; }
     .icon{
       width:46px;
       height:46px;
@@ -179,52 +187,38 @@
     .icon:hover{ transform: translateY(-1px); background: rgba(255,255,255,.18); }
     .icon svg{ width:22px; height:22px; color: rgba(255,255,255,.92); }
 
-    /* Availability pill */
-    .position{
-      margin-top: 10px;
-      padding: 12px 14px;
+    /* Availability line (text-only, centered) */
+    .availability{
+      margin-top: 12px;
+      display:inline-block;
+      padding: 10px 14px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--mint1), var(--mint2));
-      border: 1px solid rgba(255,255,255,.36);
-      box-shadow: 0 18px 55px rgba(0,0,0,.22);
-      color: rgba(255,255,255,.99);
-      font-size: 14px;
-      font-weight: 950;
+      background: linear-gradient(135deg, rgba(25,196,163,.22), rgba(18,166,135,.16));
+      border: 1px solid rgba(25,196,163,.28);
+      box-shadow: 0 14px 44px rgba(0,0,0,.16);
+
+      color: rgba(255,255,255,.96);
+      font-size: 13px;
+      font-weight: 900;
       line-height: 1.25;
-      text-shadow: 0 6px 18px rgba(0,0,0,.24);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      flex-wrap:wrap;
-      text-align:center;
+      text-shadow: 0 6px 18px rgba(0,0,0,.35);
+      max-width: 42ch;
     }
 
-    .miniAvatar{
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      background: var(--profile) center/cover no-repeat;
-      border: 1px solid rgba(255,255,255,.86);
-      box-shadow: 0 0 0 5px rgba(255,255,255,.14);
-      flex: 0 0 auto;
-    }
-
-    /* WhatsApp CTA */
+    /* WhatsApp CTA (smaller + elegant) */
     .waCta{
       margin-top: 10px;
-      width: 100%;
-      display:flex;
+      display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      padding: 12px 14px;
+      padding: 10px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,.94);
+      background: rgba(255,255,255,.92);
       border: 1px solid rgba(255,255,255,.40);
-      box-shadow: 0 16px 48px rgba(0,0,0,.16);
-      color: rgba(12,15,18,.92);
-      font-size: 14px;
+      box-shadow: 0 14px 42px rgba(0,0,0,.14);
+      color: rgba(12,15,18,.90);
+      font-size: 13px;
       font-weight: 950;
       text-decoration:none;
       -webkit-tap-highlight-color: transparent;
@@ -268,7 +262,7 @@
     .cardSub{ color: var(--muted); font-size: 13px; margin-top: 4px; line-height: 1.25; }
     .cardBody{ padding: 0 16px 16px; }
 
-    /* Readable panel for About */
+    /* About content */
     .aboutPanel{
       margin-top: 10px;
       padding: 12px 12px;
@@ -283,16 +277,11 @@
     li{ margin: 8px 0; color: var(--text); }
 
     /* Inactive sections */
-    .inactive{
-      opacity: .62;
-      background: var(--ui2);
-    }
+    .inactive{ opacity: .62; background: var(--ui2); }
     .inactive .cardTitle,
     .inactive .cardSub,
     .inactive li,
-    .inactive .muted{
-      color: rgba(12,15,18,.62);
-    }
+    .inactive .muted{ color: rgba(12,15,18,.62); }
 
     .badge{
       display:inline-flex;
@@ -310,11 +299,7 @@
       flex: 0 0 auto;
     }
 
-    .clickable{
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      user-select:none;
-    }
+    .clickable{ cursor: pointer; -webkit-tap-highlight-color: transparent; user-select:none; }
 
     /* Toast */
     .toast{
@@ -338,11 +323,7 @@
       transition: opacity .18s ease, transform .18s ease;
       z-index: 999;
     }
-    .toast.show{
-      opacity: 1;
-      transform: translateX(-50%) translateY(-2px);
-      pointer-events: auto;
-    }
+    .toast.show{ opacity: 1; transform: translateX(-50%) translateY(-2px); pointer-events: auto; }
     .toast button{
       border: 0;
       background: rgba(255,255,255,.14);
@@ -360,6 +341,62 @@
       margin-top: 16px;
       padding-bottom: 6px;
     }
+  
+
+    /* Cookie consent */
+    .cookieBar{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      width: min(520px, calc(100vw - 24px));
+      z-index: 1000;
+      display: none;
+    }
+    .cookieCard{
+      background: rgba(255,255,255,.94);
+      border: 1px solid rgba(255,255,255,.50);
+      box-shadow: 0 18px 55px rgba(0,0,0,.18);
+      border-radius: 22px;
+      padding: 14px 14px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .cookieText{
+      font-size: 13px;
+      line-height: 1.25;
+      color: rgba(12,15,18,.86);
+    }
+    .cookieBtns{ display:flex; gap:10px; flex:0 0 auto; }
+    .btn{
+      border: 1px solid rgba(12,15,18,.12);
+      background: rgba(255,255,255,.92);
+      color: rgba(12,15,18,.90);
+      border-radius: 999px;
+      padding: 10px 12px;
+      font-weight: 950;
+      font-size: 12px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      white-space: nowrap;
+    }
+    .btn.accept{
+      background: linear-gradient(135deg, rgba(25,196,163,.96), rgba(18,166,135,.90));
+      color: rgba(255,255,255,.98);
+      border-color: rgba(255,255,255,.22);
+      box-shadow: 0 14px 42px rgba(0,0,0,.14);
+    }
+
+    @media (max-width: 380px){
+      .cookieCard{ flex-direction: column; align-items: stretch; }
+      .cookieBtns{ width: 100%; }
+      .btn{ width: 100%; }
+    }
+
   </style>
 </head>
 
@@ -372,7 +409,10 @@
         <header class="top">
           <div class="avatar" aria-label="Profile photo"></div>
           <div class="brand">brunu_uncut_travel</div>
-          <div class="identity">Travel Leader • Trip Planner • UGC Creator<br/>Tech Product Management background</div>
+
+          <!-- HERO (only role + signature) -->
+          <div class="heroRole">Travel Leader &amp; UGC Creator</div>
+          <div class="heroSig">Turning travel into experiences</div>
 
           <div class="social" aria-label="Social links">
             <a class="icon" href="https://www.instagram.com/brunu_uncut_travel/" target="_blank" rel="noreferrer" aria-label="Instagram">
@@ -387,45 +427,36 @@
             <a class="icon" href="https://www.facebook.com/profile.php?id=61586558676697" target="_blank" rel="noreferrer" aria-label="Facebook">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 8.5V7.2c0-1.1.9-2 2-2h1.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9.5 12h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12.2 21V12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12.2 12V8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
             </a>
-            <a class="icon" href="https://www.linkedin.com/in/brunuoliveira/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.7 10.2V18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6.7 6.3h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M10.2 18v-4.4c0-1.8 1-3 2.7-3 1.8 0 2.6 1.2 2.6 3V18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-            </a>
           </div>
 
-          <div class="position">
-            <span class="miniAvatar" aria-hidden="true"></span>
-            Available as a Travel Leader for families &amp; groups.
-          </div>
+          <!-- Availability (text-only) -->
+          <div class="availability">Available as a Travel Leader for families &amp; groups.</div>
 
+          <!-- WhatsApp CTA (smaller, elegant) -->
           <a class="waCta" href="https://api.whatsapp.com/send?phone=351963623430" target="_blank" rel="noreferrer" aria-label="Contact on WhatsApp">
             <svg class="waIcon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M20.2 11.7a8.2 8.2 0 0 1-12.9 6.7L4 19l.7-3.2a8.2 8.2 0 1 1 15.5-4.1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M9.5 9.2c.2-.5.4-.6.8-.6h.6c.2 0 .4.1.5.4l.7 1.6c.1.3.1.6-.1.8l-.4.4c-.2.2-.2.4 0 .7.5.8 1.4 1.6 2.2 2.1.2.2.5.2.7 0l.5-.4c.2-.2.5-.2.8-.1l1.7.7c.3.1.4.3.4.5v.6c0 .4-.1.6-.6.8-.6.3-1.8.4-3.8-.7-2-.9-3.7-2.5-4.7-4.5-1.1-2-.9-3.2-.7-3.8Z" fill="currentColor" opacity=".85"/>
             </svg>
-            Contact me on WhatsApp
+            Contact me
           </a>
         </header>
 
-        <!-- ABOUT (static) -->
+        <!-- ABOUT -->
         <section class="card" id="about">
           <div class="cardHead">
             <div>
-              <div class="cardTitle">About me</div>
-            </div>
+              <div class="cardTitle">About</div>
+              </div>
           </div>
           <div class="cardBody">
             <div class="aboutPanel">
-              <div class="aboutTop">Travel Leader, Trip Planner &amp; UGC Creator</div>
-              <div class="muted">Background in Tech Product Management</div>
-
-              <div style="height:10px"></div>
-              <div class="muted" style="font-weight:900">I create:</div>
+              <div class="aboutTop">Background in Tech Product Management</div>
               <ul>
                 <li>Guided trips for families &amp; small groups <span class="muted">(Asia, Europe, Morocco)</span></li>
-                <li>Travel content for hotels, brands &amp; experiences</li>
+                <li>Content creation for hotels, brands &amp; travel experiences</li>
                 <li>Free guides and custom itineraries</li>
               </ul>
-
               <div style="height:12px"></div>
               <div class="muted">📩 For group trips &amp; brand collaborations, send a DM.</div>
             </div>
@@ -437,7 +468,7 @@
           <div class="cardHead">
             <div>
               <div class="cardTitle small">Mentions &amp; links</div>
-              <div class="cardSub">Mentioned on social networks · discount codes · free guides · collaborations</div>
+              <div class="cardSub">Discount codes · Free guides · Collaborations</div>
             </div>
             <div class="badge">COMING SOON</div>
           </div>
@@ -470,6 +501,19 @@
     </div>
   </div>
 
+  <!-- COOKIE CONSENT -->
+  <div class="cookieBar" id="cookieBar" role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <div class="cookieCard">
+      <div class="cookieText">
+        This website uses cookies to improve your experience. You can accept or reject non-essential cookies.
+      </div>
+      <div class="cookieBtns">
+        <button class="btn" id="cookieReject" type="button">Reject</button>
+        <button class="btn accept" id="cookieAccept" type="button">Accept</button>
+      </div>
+    </div>
+  </div>
+
   <!-- TOAST -->
   <div class="toast" id="toast" role="status" aria-live="polite">
     <div id="toastText">Coming soon — DM me on Instagram.</div>
@@ -479,6 +523,7 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
+    // Toast (for disabled sections)
     const toast = document.getElementById('toast');
     const toastBtn = document.getElementById('toastBtn');
     const igUrl = 'https://www.instagram.com/brunu_uncut_travel/';
@@ -499,6 +544,26 @@
         showToast('Coming soon — DM me on Instagram.');
       });
     });
+
+    // Cookie consent (simple, standard UI)
+    const cookieBar = document.getElementById('cookieBar');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieReject = document.getElementById('cookieReject');
+
+    function setConsent(value){
+      try{ localStorage.setItem('cookieConsent', value); }catch(e){}
+      document.cookie = `cookie_consent=${value}; max-age=${60*60*24*365}; path=/; samesite=lax`;
+      cookieBar.style.display = 'none';
+    }
+
+    function getConsent(){
+      try{ return localStorage.getItem('cookieConsent'); }
+      catch(e){ return null; }
+    }
+
+    if(!getConsent()) cookieBar.style.display = 'block';
+
+    cookieAccept.addEventListener('click', () => setConsent('accepted'));
+    cookieReject.addEventListener('click', () => setConsent('rejected'));
   </script>
 </body>
-</html>
