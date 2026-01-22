@@ -11,8 +11,8 @@
   --text:#0b0b0f;
   --muted:rgba(11,11,15,.62);
   --line:rgba(11,11,15,.10);
-  --glass:rgba(255,255,255,.68);
-  --glassSoft:rgba(255,255,255,.48);
+  --glass:rgba(255,255,255,.70);
+  --glassSoft:rgba(255,255,255,.50);
   --shadow:0 26px 70px rgba(0,0,0,.18);
   --radius:22px;
   --wa:#25D366;
@@ -27,23 +27,17 @@ body{
   color:var(--text);
 }
 
-/* HERO */
+/* HERO — agora apenas atmosfera */
 .hero{
   position:relative;
-  .hero{
-  height:160px;   /* mais curto */
-  padding-top:0;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  padding-top:28px;
+  height:150px;              /* MAIS CURTO */
   overflow:hidden;
 }
 .hero::before{
   content:"";
   position:absolute;
   inset:-40px;
-  background:url("earth.jpg") center 40% / cover no-repeat;
+  background:url("earth.jpg") center 42% / cover no-repeat;
   filter:saturate(1.08) contrast(1.03);
 }
 .hero::after{
@@ -51,24 +45,15 @@ body{
   position:absolute;
   inset:0;
   background:
-    radial-gradient(700px 350px at 70% 25%, rgba(255,255,255,.55), transparent 60%),
+    radial-gradient(700px 320px at 70% 25%, rgba(255,255,255,.55), transparent 60%),
     linear-gradient(to bottom, rgba(255,255,255,.55), #f3f4f6);
-}
-.hero h1{
-  position:relative;
-  margin:0;
-  font-size:34px;
-  font-weight:500;
-  letter-spacing:-0.02em;
-  color:rgba(0,0,0,.75);
-  z-index:1;
 }
 
 /* AVATAR */
 .avatarWrap{
   display:flex;
   justify-content:center;
-  margin-top:-46px;
+  margin-top:-48px;
   position:relative;
   z-index:2;
 }
@@ -77,8 +62,8 @@ body{
   height:120px;
   border-radius:50%;
   object-fit:cover;
-  box-shadow:0 16px 40px rgba(0,0,0,.18);
   background:#fff;
+  box-shadow:0 14px 36px rgba(0,0,0,.18);
 }
 
 /* PAGE */
@@ -135,7 +120,7 @@ body{
   position:absolute;
   inset:-60px;
   background:url("earth.jpg") center 35% / 120% no-repeat;
-  opacity:.12; /* slightly stronger */
+  opacity:.14;               /* globo subtil mas visível */
   pointer-events:none;
 }
 
@@ -218,7 +203,7 @@ body{
   color:rgba(0,0,0,.7);
 }
 
-/* FOOTER (unchanged) */
+/* FOOTER */
 footer{
   margin-top:16px;
   font-size:13px;
@@ -266,11 +251,11 @@ footer{
 </div>
 
 <main class="page">
+
   <div class="name">Brunu Travel</div>
 
   <nav class="social">
     <a href="https://www.instagram.com/brunu_uncut_travel/" target="_blank" rel="noopener noreferrer">
-      <!-- Instagram -->
       <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10z"/></svg>
     </a>
     <a href="https://www.facebook.com/profile.php?id=61586558676697" target="_blank" rel="noopener noreferrer">
@@ -286,7 +271,9 @@ footer{
 
   <section class="card">
     <div class="cardInner">
+
       <div class="role">Travel Leader & Content Creator</div>
+
       <ul class="bullets">
         <li>Planned and led trips for groups & families</li>
         <li>Content creation for Products & Experiences</li>
@@ -294,7 +281,9 @@ footer{
       </ul>
 
       <div class="cta">
-        <a class="btnWa" href="https://wa.me/351963623430" target="_blank">Contact via WhatsApp</a>
+        <a class="btnWa" href="https://wa.me/351963623430" target="_blank">
+          Contact via WhatsApp
+        </a>
       </div>
 
       <div class="divider"></div>
@@ -310,6 +299,7 @@ footer{
           <a href="https://instagram.com/viagens.rainho" target="_blank">Link</a>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -318,7 +308,9 @@ footer{
 
 <div class="cookie" id="cookie">
   <p>This site uses essential cookies to improve the experience.</p>
-  <button onclick="localStorage.setItem('cookie','ok');this.parentElement.style.display='none'">Accept</button>
+  <button onclick="localStorage.setItem('cookie','ok');this.parentElement.style.display='none'">
+    Accept
+  </button>
 </div>
 
 <script>
