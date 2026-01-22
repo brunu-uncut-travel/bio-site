@@ -1,10 +1,10 @@
-<!-- FILE: index.html  |  Brunu Travel BIO (v1.1.1 - image+globe+tiktok fix) -->
+<!-- FILE: index.html  |  Brunu Travel BIO (v1.1.2 - globe visible + icons fix + tiktok fix + text change) -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Brunu Travel — Travel Leader & Content Creator. Guided trips for groups and families. Content creation for products and experiences." />
+  <meta name="description" content="Brunu Travel — Travel Leader & Content Creator. Planned and led trips for groups & families. Content creation for products and experiences." />
   <title>Brunu Travel</title>
 
   <style>
@@ -51,8 +51,8 @@
 
     /* HERO */
     .avatar{
-      width: 150px;     /* CHANGED: bigger */
-      height: 150px;    /* CHANGED: bigger */
+      width: 150px;
+      height: 150px;
       border-radius: 999px;
       object-fit: cover;
       display:block;
@@ -70,7 +70,7 @@
       font-weight: 760;
     }
 
-    /* Social pills (smaller, one line) */
+    /* Social pills (smaller, one line, no clipping) */
     .social{
       display:flex;
       justify-content:center;
@@ -79,7 +79,7 @@
       flex-wrap: nowrap;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      padding: 2px 2px 18px;
+      padding: 2px 10px 18px;   /* CHANGED: extra horizontal padding so edges don't clip */
       scrollbar-width: none;
     }
     .social::-webkit-scrollbar{ display:none; }
@@ -101,11 +101,15 @@
     }
     .pill:hover{ background: rgba(255,255,255,.82); transform: translateY(-1px); }
 
+    /* CHANGED: bigger icons + prevent SVG clipping */
     .icon{
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
       display:inline-block;
+      overflow: visible;
+      flex: 0 0 auto;
     }
+    .pill svg{ overflow: visible; }
 
     /* Card */
     .card{
@@ -120,42 +124,29 @@
       text-align:left;
     }
 
-    /* CHANGED: globe background stronger/visible but still subtle */
+    /* CHANGED: globe background as subtle SVG image (actually visible) */
     .card::before{
       content:"";
       position:absolute;
-      inset:-60px -60px -60px -60px;
-
-      /* globe "surface" glow + vignette */
-      background:
-        radial-gradient(820px 540px at 50% 18%,
-          rgba(170,210,255,.26),
-          rgba(255,255,255,0) 62%),
-        radial-gradient(640px 640px at 50% 28%,
-          rgba(120,160,220,.20),
-          rgba(255,255,255,0) 66%),
-        radial-gradient(640px 640px at 50% 30%,
-          rgba(0,0,0,.14),
-          rgba(255,255,255,0) 74%);
-      opacity: .78;
+      inset:-30px -30px -30px -30px;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='700' viewBox='0 0 900 700'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='35%25' r='60%25'%3E%3Cstop offset='0%25' stop-color='%23ffffff' stop-opacity='0.95'/%3E%3Cstop offset='55%25' stop-color='%23cfe2ff' stop-opacity='0.55'/%3E%3Cstop offset='100%25' stop-color='%23ffffff' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='shade' cx='50%25' cy='35%25' r='60%25'%3E%3Cstop offset='0%25' stop-color='%23000000' stop-opacity='0.10'/%3E%3Cstop offset='75%25' stop-color='%23000000' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='450' cy='250' r='260' fill='url(%23g)'/%3E%3Ccircle cx='450' cy='250' r='260' fill='url(%23shade)'/%3E%3Cg opacity='0.18' stroke='%23ffffff' stroke-width='2'%3E%3C!-- lat lines --%3E%3Cellipse cx='450' cy='250' rx='240' ry='70' fill='none'/%3E%3Cellipse cx='450' cy='250' rx='240' ry='120' fill='none'/%3E%3Cellipse cx='450' cy='250' rx='240' ry='170' fill='none'/%3E%3C!-- lon lines --%3E%3Cellipse cx='450' cy='250' rx='70' ry='240' fill='none'/%3E%3Cellipse cx='450' cy='250' rx='120' ry='240' fill='none'/%3E%3Cellipse cx='450' cy='250' rx='170' ry='240' fill='none'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: 120% auto;
+      background-position: 50% 10%;
+      opacity: 0.70; /* visible but subtle */
       pointer-events:none;
       transform: translateZ(0);
     }
 
-    /* faint latitude/longitude lines */
+    /* subtle extra glow, stays the same */
     .card::after{
       content:"";
       position:absolute;
       inset:0;
-      background:
-        radial-gradient(circle at 50% 28%, rgba(255,255,255,.35) 0 44%, transparent 46%),
-        repeating-linear-gradient(90deg, transparent 0 18px, rgba(255,255,255,.14) 18px 19px),
-        repeating-linear-gradient(0deg, transparent 0 18px, rgba(255,255,255,.14) 18px 19px);
-      mask:
-        radial-gradient(circle at 50% 28%, rgba(0,0,0,.90) 0 46%, transparent 60%);
-      opacity: .16;
+      background: radial-gradient(700px 380px at 50% 0%, rgba(255,255,255,.40), transparent 70%);
+      opacity: .22;
       pointer-events:none;
-      transform: translateZ(0);
     }
 
     .section{
@@ -238,6 +229,8 @@
       border-radius: var(--radiusSm);
       border: 1px solid var(--line);
       background: rgba(255,255,255,.52);
+      position: relative;
+      z-index: 1;
     }
 
     .featLeft{
@@ -332,10 +325,9 @@
 
     @media (max-width: 520px){
       .brand{ font-size: 30px; }
-      .avatar{ width: 142px; height: 142px; } /* keeps larger on mobile */
+      .avatar{ width: 150px; height: 150px; }
       .section{ padding: 18px 18px; }
       .pill{ padding: 8px 10px; font-size: 12.5px; gap: 7px; }
-      .icon{ width: 13px; height: 13px; }
       .cookie{ flex-direction: column; align-items: flex-start; }
       .cookieActions{ width: 100%; }
       .cookieActions button{ flex:1; }
@@ -373,8 +365,8 @@
             <span>Facebook</span>
           </a>
 
-          <!-- FIXED: TikTok link now includes https:// -->
-          <a class="pill" href="https://tiktok.com/@brunu_uncut_travel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <!-- FIXED: TikTok link (working) -->
+          <a class="pill" href="https://www.tiktok.com/@brunu_uncut_travel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
             <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M14 3v12.2a4.4 4.4 0 1 1-4.4-4.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
               <path d="M14 6.3c1.2 2.2 3.2 3.6 6 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
@@ -397,14 +389,14 @@
           <p class="sub">Travel Leader &amp; Content Creator</p>
 
           <ul class="bullets">
-            <li>Guided trips for Groups and Families</li>
+            <li>Planned and led trips for groups &amp; families</li>
             <li>Content creation for Products &amp; Experiences</li>
             <li>Background in Tech Product Management</li>
           </ul>
 
           <div class="ctaRow">
             <a class="btn" href="https://wa.me/351963623430" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">
-              <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M20 11.6a7.8 7.8 0 0 1-11.8 6.8L4 19.8l1.5-3.9A7.8 7.8 0 1 1 20 11.6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
                 <path d="M9.4 8.9c.3-.6.6-.6.9-.6h.8c.2 0 .4 0 .6.5l.7 1.7c.1.3.1.6-.1.8l-.5.5c-.2.2-.1.6.1.8.6.9 1.4 1.7 2.3 2.2.3.2.6.2.8 0l.7-.7c.2-.2.5-.2.8-.1l1.7.8c.4.2.4.5.4.7 0 .4-.2 1.1-.6 1.4-.5.4-1.2.6-1.7.6-1 0-3.6-.8-5.8-3-2.2-2.2-3-4.7-3-5.8 0-.6.1-1.2.5-1.7Z" fill="currentColor"/>
               </svg>
