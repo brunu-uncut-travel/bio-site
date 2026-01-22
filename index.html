@@ -1,27 +1,25 @@
+<!-- FILE: index.html  |  Brunu Travel BIO (v1.1) -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Brunu Travel — Travel Leader & UGC Creator. Guided trips for groups and families. Content creation for products and experiences." />
+  <meta name="description" content="Brunu Travel — Travel Leader & Content Creator. Guided trips for groups and families. Content creation for products and experiences." />
   <title>Brunu Travel</title>
 
   <style>
     :root{
-      --bg: #f5f5f7;
-      --card: rgba(255,255,255,.78);
-      --cardSolid: #ffffff;
+      --bg: #f6f7f8;
       --text: #0b0b0f;
-      --muted: rgba(11,11,15,.65);
-      --hairline: rgba(11,11,15,.10);
-      --shadow: 0 18px 55px rgba(0,0,0,.10);
+      --muted: rgba(11,11,15,.62);
+      --line: rgba(11,11,15,.08);
+      --card: rgba(255,255,255,.82);
+      --shadow: 0 24px 70px rgba(0,0,0,.12);
       --radius: 22px;
       --radiusSm: 14px;
-      --max: 740px;
-      --btn: #111113;
-      --btnText: #ffffff;
+      --max: 720px;
       --wa: #25D366;
-      --focus: rgba(0,0,0,.08);
+      --pillBg: rgba(255,255,255,.60);
     }
 
     *{ box-sizing:border-box; }
@@ -31,160 +29,202 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--text);
       background:
-        radial-gradient(1200px 800px at 20% 0%, rgba(0,0,0,.07), transparent 55%),
-        radial-gradient(900px 600px at 95% 15%, rgba(0,0,0,.05), transparent 55%),
-        linear-gradient(180deg, #ffffff 0%, var(--bg) 55%, #ffffff 100%);
+        radial-gradient(900px 600px at 50% -220px, rgba(0,0,0,.06), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
     }
 
-    a{ color: inherit; text-decoration: none; }
+    a{ color: inherit; text-decoration:none; }
     a:hover{ text-decoration: underline; text-underline-offset: 4px; }
 
     .wrap{
-      min-height:100%;
+      min-height:100vh;
       display:flex;
-      align-items:flex-start;
       justify-content:center;
-      padding: 22px 16px 90px;
+      padding: 22px 16px 96px;
     }
 
     .page{
-      width: 100%;
+      width:100%;
       max-width: var(--max);
-    }
-
-    /* Header */
-    .top{
-      padding: 8px 4px 16px;
       text-align:center;
     }
 
-    .brand{
-      font-size: 34px;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      font-weight: 700;
-      margin: 18px 0 10px;
-    }
-
+    /* HERO */
     .avatar{
-      width: 90px;
-      height: 90px;
+      width: 128px;
+      height: 128px;
       border-radius: 999px;
       object-fit: cover;
       display:block;
-      margin: 0 auto 14px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.10);
-      /* no heavy border */
+      margin: 10px auto 12px;
       border: 1px solid rgba(255,255,255,.55);
-      background: #fff;
+      box-shadow: 0 14px 38px rgba(0,0,0,.14);
+      background:#fff;
     }
 
+    .brand{
+      margin: 0 0 12px;
+      font-size: 34px;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      font-weight: 760;
+    }
+
+    /* Social pills (smaller, one line) */
+    .social{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: nowrap;     /* keep 1 line */
+      overflow-x: auto;      /* in case very small screens */
+      -webkit-overflow-scrolling: touch;
+      padding: 2px 2px 18px;
+      scrollbar-width: none;
+    }
+    .social::-webkit-scrollbar{ display:none; }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 9px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--pillBg);
+      font-size: 13px;
+      color: rgba(11,11,15,.82);
+      white-space: nowrap;
+      text-decoration:none !important;
+      transition: transform .12s ease, background .12s ease;
+      flex: 0 0 auto;
+    }
+    .pill:hover{ background: rgba(255,255,255,.82); transform: translateY(-1px); }
+
+    .icon{
+      width: 14px;
+      height: 14px;
+      display:inline-block;
+    }
+
+    /* Card */
     .card{
+      position: relative;
+      border-radius: var(--radius);
+      overflow:hidden;
       background: var(--card);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255,255,255,.55);
       box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      overflow:hidden;
+      text-align:left;
+    }
+
+    /* Subtle globe background */
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-40px -40px -40px -40px;
+      background:
+        radial-gradient(700px 460px at 55% 10%,
+          rgba(170,210,255,.18),
+          rgba(255,255,255,0) 62%),
+        radial-gradient(520px 520px at 50% 28%,
+          rgba(120,160,220,.14),
+          rgba(255,255,255,0) 65%),
+        radial-gradient(520px 520px at 50% 30%,
+          rgba(0,0,0,.10),
+          rgba(255,255,255,0) 72%);
+      opacity: .55; /* keep it subtle */
+      filter: blur(0.2px);
+      pointer-events:none;
+      transform: translateZ(0);
+    }
+    /* faint latitude/longitude lines */
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 28%, rgba(255,255,255,.30) 0 44%, transparent 46%),
+        repeating-linear-gradient(90deg, transparent 0 18px, rgba(255,255,255,.10) 18px 19px),
+        repeating-linear-gradient(0deg, transparent 0 18px, rgba(255,255,255,.10) 18px 19px);
+      mask:
+        radial-gradient(circle at 50% 28%, rgba(0,0,0,.85) 0 46%, transparent 58%);
+      opacity: .10;
+      pointer-events:none;
+      transform: translateZ(0);
     }
 
     .section{
-      padding: 22px 22px;
-      border-top: 1px solid var(--hairline);
-    }
-    .section:first-child{ border-top:none; }
-
-    .h{
-      font-size: 14px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 0 0 8px;
-      font-weight: 600;
+      position:relative;
+      padding: 18px 20px;
     }
 
     .sub{
-      font-size: 17px;
-      font-weight: 600;
-      margin: 0 0 14px;
+      margin: 2px 0 10px;
+      font-size: 16px;
+      font-weight: 650;
       letter-spacing: -0.01em;
     }
 
     .bullets{
       margin: 0;
       padding-left: 18px;
-      color: var(--text);
     }
     .bullets li{
       margin: 9px 0;
+      font-size: 15px;
       line-height: 1.35;
-      font-size: 16px;
-    }
-
-    .divider{
-      height: 1px;
-      background: var(--hairline);
-      margin: 18px 0;
     }
 
     .ctaRow{
       display:flex;
       justify-content:center;
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
     .btn{
       display:inline-flex;
       align-items:center;
       gap: 10px;
-      padding: 12px 16px;
+      padding: 11px 14px;         /* slightly less tall */
       border-radius: 999px;
-      background: var(--btn);
-      color: var(--btnText);
-      font-weight: 650;
-      font-size: 15px;
-      letter-spacing: -0.01em;
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 12px 30px rgba(0,0,0,.16);
-      text-decoration:none !important;
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
-      cursor:pointer;
-      user-select:none;
-    }
-    .btn:hover{ transform: translateY(-1px); box-shadow: 0 16px 40px rgba(0,0,0,.18); }
-    .btn:active{ transform: translateY(0px); }
-    .btn.wa{ background: var(--wa); color: #0a1a10; }
-    .btn.wa:hover{ filter: brightness(.98); }
-
-    .linksRow{
-      display:flex;
-      gap: 10px;
-      justify-content:center;
-      flex-wrap: wrap;
-      padding: 14px 10px 0;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--hairline);
-      background: rgba(255,255,255,.55);
-      text-decoration:none !important;
+      background: var(--wa);
+      color: #062112;
+      font-weight: 700;
       font-size: 14px;
-      color: rgba(11,11,15,.85);
-      transition: background .12s ease, transform .12s ease;
+      letter-spacing: -0.01em;
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 14px 32px rgba(0,0,0,.14);
+      text-decoration:none !important;
+      transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
     }
-    .pill:hover{ background: rgba(255,255,255,.8); transform: translateY(-1px); }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 18px 42px rgba(0,0,0,.16); filter: brightness(.99); }
+    .btn:active{ transform: translateY(0); }
+
+    .hr{
+      height: 1px;
+      background: var(--line);
+      margin: 0 20px;
+      position:relative;
+      z-index:1;
+    }
+
+    /* Featured */
+    .label{
+      margin: 0 0 10px;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
 
     .featured{
       display:flex;
       flex-direction:column;
       gap: 10px;
-      margin-top: 10px;
     }
 
     .featItem{
@@ -194,48 +234,49 @@
       gap: 12px;
       padding: 12px 12px;
       border-radius: var(--radiusSm);
-      border: 1px solid var(--hairline);
-      background: rgba(255,255,255,.50);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.52);
     }
 
     .featLeft{
+      min-width:0;
       display:flex;
       flex-direction:column;
       gap: 2px;
-      min-width: 0;
     }
+
     .featTitle{
+      margin:0;
+      font-size: 15px;
       font-weight: 650;
       letter-spacing: -0.01em;
-      font-size: 15px;
-      line-height: 1.2;
-      margin:0;
       white-space: nowrap;
       overflow:hidden;
       text-overflow: ellipsis;
     }
+
     .featMeta{
       margin:0;
       font-size: 13px;
       color: var(--muted);
-      line-height: 1.25;
     }
+
     .featLink{
       flex: 0 0 auto;
-      color: rgba(11,11,15,.75);
       font-size: 13px;
-      text-decoration:none !important;
-      border: 1px solid var(--hairline);
-      padding: 8px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,.55);
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.62);
+      text-decoration:none !important;
+      color: rgba(11,11,15,.74);
     }
-    .featLink:hover{ background: rgba(255,255,255,.85); }
+    .featLink:hover{ background: rgba(255,255,255,.88); }
 
     .footer{
       text-align:center;
       padding: 14px 8px 0;
-      color: rgba(11,11,15,.45);
+      color: rgba(11,11,15,.42);
       font-size: 13px;
     }
 
@@ -247,7 +288,7 @@
       bottom: 12px;
       margin: 0 auto;
       max-width: var(--max);
-      background: rgba(255,255,255,.86);
+      background: rgba(255,255,255,.88);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(0,0,0,.10);
@@ -258,11 +299,12 @@
       gap: 12px;
       align-items:center;
       justify-content: space-between;
+      z-index: 999;
     }
     .cookie p{
       margin:0;
       font-size: 13px;
-      color: rgba(11,11,15,.75);
+      color: rgba(11,11,15,.76);
       line-height: 1.25;
     }
     .cookieActions{
@@ -275,24 +317,31 @@
       border-radius: 999px;
       font-size: 13px;
       font-weight: 650;
-      border: 1px solid var(--hairline);
-      background: rgba(255,255,255,.65);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.68);
       cursor:pointer;
     }
     .btnSm.primary{
-      background: var(--btn);
-      color: var(--btnText);
+      background: #111113;
+      color: #fff;
       border-color: rgba(255,255,255,.10);
     }
     .btnSm:hover{ filter: brightness(.98); }
 
     @media (max-width: 520px){
       .brand{ font-size: 30px; }
-      .section{ padding: 20px 18px; }
-      .bullets li{ font-size: 15px; }
+      .avatar{ width: 120px; height: 120px; }
+      .section{ padding: 18px 18px; }
+      .pill{ padding: 8px 10px; font-size: 12.5px; gap: 7px; }
+      .icon{ width: 13px; height: 13px; }
       .cookie{ flex-direction: column; align-items: flex-start; }
       .cookieActions{ width: 100%; }
       .cookieActions button{ flex:1; }
+    }
+
+    @media (max-width: 380px){
+      .pill span{ display:none; } /* icons-only if super small */
+      .pill{ padding: 8px 10px; }
     }
   </style>
 </head>
@@ -300,53 +349,51 @@
 <body>
   <main class="wrap">
     <div class="page">
-      <header class="top">
-        <!-- Replace src with your actual photo file, e.g. ./assets/profile.jpg -->
+      <header>
+        <!-- Put profile.jpg in the same folder as this file -->
         <img class="avatar" src="profile.jpg" alt="Brunu Travel profile photo" />
         <h1 class="brand">Brunu Travel</h1>
 
-        <!-- Social links (replace URLs as needed) -->
-        <nav class="linksRow" aria-label="Social links">
+        <!-- Social links order: Instagram, Facebook, TikTok, YouTube -->
+        <nav class="social" aria-label="Social links">
           <a class="pill" href="https://www.instagram.com/brunu_uncut_travel/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <!-- Instagram icon -->
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.7"/>
               <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Z" stroke="currentColor" stroke-width="1.7"/>
               <path d="M17.6 6.4h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
             </svg>
-            Instagram
+            <span>Instagram</span>
           </a>
 
-          <a class="pill" href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <a class="pill" href="https://www.facebook.com/profile.php?id=61586558676697" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M14 8h2V5h-2c-2 0-4 2-4 4v3H8v3h2v7h3v-7h2.3l.7-3H13V9c0-.6.4-1 1-1Z" fill="currentColor"/>
+            </svg>
+            <span>Facebook</span>
+          </a>
+
+          <a class="pill" href="https://tiktok.com/@brunu_uncut_travel" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M14 3v12.2a4.4 4.4 0 1 1-4.4-4.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
               <path d="M14 6.3c1.2 2.2 3.2 3.6 6 3.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
             </svg>
-            TikTok
+            <span>TikTok</span>
           </a>
 
-          <a class="pill" href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <a class="pill" href="https://www.youtube.com/@brunu_uncut_travel" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M21 12s0-4-1-6-4-2-8-2-7 1-8 2-1 6-1 6 0 4 1 6 4 2 8 2 7-1 8-2 1-6 1-6Z" stroke="currentColor" stroke-width="1.7"/>
               <path d="M11 9.5v5l5-2.5-5-2.5Z" fill="currentColor"/>
             </svg>
-            YouTube
-          </a>
-
-          <a class="pill" href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M14 8h2V5h-2c-2 0-4 2-4 4v3H8v3h2v7h3v-7h2.3l.7-3H13V9c0-.6.4-1 1-1Z" fill="currentColor"/>
-            </svg>
-            Facebook
+            <span>YouTube</span>
           </a>
         </nav>
       </header>
 
       <section class="card" aria-label="Main content">
-        <!-- ABOUT -->
         <div class="section">
-          <p class="h">About</p>
-          <p class="sub">Travel Leader &amp; UGC Creator</p>
+          <!-- Removed "About" label per your request -->
+          <p class="sub">Travel Leader &amp; Content Creator</p>
 
           <ul class="bullets">
             <li>Guided trips for Groups and Families</li>
@@ -355,13 +402,9 @@
           </ul>
 
           <div class="ctaRow">
-            <!-- Replace the WhatsApp link with your number:
-                 https://wa.me/<countrycode><number>
-                 Example PT: https://wa.me/351912345678
-            -->
-            <a class="btn wa" href="https://wa.me/351000000000" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">
+            <a class="btn" href="https://wa.me/351963623430" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">
               <!-- WhatsApp icon -->
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <svg class="icon" style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M20 11.6a7.8 7.8 0 0 1-11.8 6.8L4 19.8l1.5-3.9A7.8 7.8 0 1 1 20 11.6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
                 <path d="M9.4 8.9c.3-.6.6-.6.9-.6h.8c.2 0 .4 0 .6.5l.7 1.7c.1.3.1.6-.1.8l-.5.5c-.2.2-.1.6.1.8.6.9 1.4 1.7 2.3 2.2.3.2.6.2.8 0l.7-.7c.2-.2.5-.2.8-.1l1.7.8c.4.2.4.5.4.7 0 .4-.2 1.1-.6 1.4-.5.4-1.2.6-1.7.6-1 0-3.6-.8-5.8-3-2.2-2.2-3-4.7-3-5.8 0-.6.1-1.2.5-1.7Z" fill="currentColor"/>
               </svg>
@@ -370,9 +413,10 @@
           </div>
         </div>
 
-        <!-- FEATURED -->
+        <div class="hr" aria-hidden="true"></div>
+
         <div class="section">
-          <p class="h">Featured</p>
+          <p class="label">Featured</p>
 
           <div class="featured">
             <div class="featItem">
@@ -415,7 +459,7 @@
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Cookie consent (very minimal, no tracking scripts here)
+    // Cookie consent (minimal, no tracking scripts)
     const KEY = "brunu_cookie_consent_v1";
     const banner = document.getElementById("cookieBanner");
     const acceptBtn = document.getElementById("cookieAccept");
@@ -427,7 +471,7 @@
     function setConsent(value){
       localStorage.setItem(KEY, value);
       banner.style.display = "none";
-      // If you later add analytics scripts, load them only when value === "accepted".
+      // If you later add analytics, only load them when value === "accepted"
     }
 
     acceptBtn.addEventListener("click", () => setConsent("accepted"));
