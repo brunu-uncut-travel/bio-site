@@ -27,40 +27,39 @@ body{
   color:var(--text);
 }
 
-/* HERO — tighter, globe lower, no hard line */
+/* HERO — globe aligned with avatar curve */
 .hero{
   position:relative;
-  height:150px;            /* smaller header */
+  height:140px;                 /* compact header */
   overflow:hidden;
 }
 .hero::before{
   content:"";
   position:absolute;
-  inset:-20px;
-  background:url("earth_v2.jpg") center 78% / cover no-repeat;
-  filter:saturate(1.03) contrast(1.04);
+  inset:-10px;
+  background:url("earth_v2.jpg") center 92% / cover no-repeat; /* LOWER */
+  filter:saturate(1.04) contrast(1.05);
 }
 .hero::after{
   content:"";
   position:absolute;
   inset:0;
-  /* ONLY soft fade, no line */
   background:
-    radial-gradient(600px 260px at 50% 20%, rgba(255,255,255,.35), transparent 60%),
-    linear-gradient(to bottom, rgba(255,255,255,.15), rgba(243,244,246,1));
+    radial-gradient(520px 220px at 50% 18%, rgba(255,255,255,.30), transparent 60%),
+    linear-gradient(to bottom, rgba(255,255,255,.12), rgba(243,244,246,1));
 }
 
 /* AVATAR */
 .avatarWrap{
   display:flex;
   justify-content:center;
-  margin-top:-60px;        /* pulls content up */
+  margin-top:-64px;              /* photo overlaps hero */
   position:relative;
   z-index:2;
 }
 .avatar{
-  width:148px;
-  height:148px;
+  width:150px;
+  height:150px;
   border-radius:50%;
   object-fit:cover;
   background:#fff;
@@ -83,7 +82,7 @@ body{
   letter-spacing:-0.02em;
 }
 
-/* SOCIAL */
+/* SOCIAL ICONS */
 .social{
   display:flex;
   justify-content:center;
@@ -121,8 +120,8 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  background:url("earth_v2.jpg") center 86% / cover no-repeat;
-  opacity:.14;
+  background:url("earth_v2.jpg") center 95% / cover no-repeat; /* LOWER + visible */
+  opacity:.20;
   pointer-events:none;
 }
 
@@ -208,7 +207,7 @@ footer{
   text-align:center;
 }
 
-/* COOKIE — unchanged, works for new users */
+/* COOKIE */
 .cookie{
   position:fixed;
   left:12px;
@@ -249,21 +248,16 @@ footer{
   <div class="name">Brunu Travel</div>
 
   <nav class="social">
-    <!-- icons unchanged -->
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/brunu_uncut_travel/" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.instagram.com/brunu_uncut_travel/" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"/><path d="M12 7a5 5 0 100 10 5 5 0 000-10z"/></svg>
     </a>
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/profile.php?id=61586558676697" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.facebook.com/profile.php?id=61586558676697" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.6-3H13.5V9.2c0-.9.3-1.6 1.7-1.6H17V5c-.3 0-1.3-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.5V11H7.4v3h2.7v8h3.4z"/></svg>
     </a>
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@brunu_uncut_travel" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.tiktok.com/@brunu_uncut_travel" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M14 3v10.6a3.9 3.9 0 11-3-3.8V7.2a6.3 6.3 0 106 6.4V9.1c1.2.9 2.6 1.4 4 1.5V7.7c-2-.2-3.6-1.5-4.2-3.3H14z"/></svg>
     </a>
-    <!-- YouTube -->
-    <a href="https://www.youtube.com/@brunu_uncut_travel" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.youtube.com/@brunu_uncut_travel" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M21.6 7.2a3 3 0 00-2.1-2.1C17.6 4.6 12 4.6 12 4.6s-5.6 0-7.5.5A3 3 0 002.4 7.2 31 31 0 002 12a31 31 0 00.4 4.8 3 3 0 002.1 2.1c1.9.5 7.5.5 7.5.5s5.6 0 7.5-.5a3 3 0 002.1-2.1A31 31 0 0022 12a31 31 0 00-.4-4.8z"/><path d="M10.2 15.4V8.6L16 12z" fill="#fff"/></svg>
     </a>
   </nav>
@@ -280,7 +274,9 @@ footer{
       </ul>
 
       <div class="cta">
-        <a class="btnWa" href="https://wa.me/351963623430" target="_blank">Contact via WhatsApp</a>
+        <a class="btnWa" href="https://wa.me/351963623430" target="_blank">
+          Contact via WhatsApp
+        </a>
       </div>
 
       <div class="divider"></div>
@@ -305,7 +301,9 @@ footer{
 
 <div class="cookie" id="cookie">
   <p>This site uses essential cookies to improve the experience.</p>
-  <button onclick="localStorage.removeItem('cookie');localStorage.setItem('cookie','ok');this.parentElement.style.display='none'">Accept</button>
+  <button onclick="localStorage.removeItem('cookie');localStorage.setItem('cookie','ok');this.parentElement.style.display='none'">
+    Accept
+  </button>
 </div>
 
 <script>
