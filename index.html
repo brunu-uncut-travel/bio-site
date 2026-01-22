@@ -1,283 +1,247 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>brunu_uncut_travel</title>
-  <meta name="description" content="brunu_uncut_travel — Travel Leader & UGC Creator. Turning travel into experiences." />
-  <meta name="theme-color" content="#0b0f12" />
-
-  <!--
-    QUICK SETUP
-    - Background image: airplane_bg.jpg
-    - Profile image: profile.jpg
-  -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brunu Uncut Travel</title>
+  <meta name="description" content="Travel Leader & UGC Creator. Turning travel into meaningful experiences." />
 
   <style>
-    :root{
-      --outer-bg: url('airplane_bg.jpg');
-      --profile:  url('profile.jpg');
-
-      --ui: rgba(255,255,255,.965);
-      --ui2: rgba(255,255,255,.88);
-      --text:#0c0f12;
-      --muted:#5f6a73;
-      --mint1:#19c4a3;
-      --mint2:#12a687;
-
-      --shadow-phone: 0 44px 130px rgba(0,0,0,.42);
-      --shadow-card:  0 18px 55px rgba(0,0,0,.16);
-      --r-phone: 48px;
-      --r: 26px;
+    /* ---------- Base ---------- */
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f6f7f8;
+      --text: #0c0f12;
+      --muted: #5f6a73;
+      --line: #e6e8eb;
+      --accent: #19c4a3;
     }
 
-    *{ box-sizing:border-box; }
+    * { box-sizing: border-box; }
 
-    body{
-      margin:0;
-      min-height:100vh;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background:#0b0f12;
-      color:var(--text);
-      overflow-x:hidden;
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.55;
     }
 
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background: var(--outer-bg) center/cover no-repeat;
-      filter: blur(18px);
-      transform: scale(1.08);
-      z-index:-3;
+    h1, h2, h3, p {
+      margin: 0;
     }
 
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:
-        radial-gradient(900px 520px at 18% -10%, rgba(25,196,163,.14), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,.38), rgba(255,255,255,.16));
-      z-index:-2;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .stage{
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      padding: 22px 14px 44px;
+    /* ---------- Layout ---------- */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 64px 20px;
     }
 
-    .phone{
-      width: min(440px, 100%);
-      border-radius: var(--r-phone);
-      padding: 10px;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.35);
-      box-shadow: var(--shadow-phone);
-      backdrop-filter: blur(14px);
+    section {
+      margin-top: 96px;
     }
 
-    .screen{
-      border-radius: calc(var(--r-phone) - 8px);
-      overflow:hidden;
-      padding: 18px 16px 22px;
+    section.soft {
+      background: var(--bg-soft);
+      padding: 72px 20px;
     }
 
-    .top{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      text-align:center;
-      gap:10px;
-      padding-top:16px;
+    /* ---------- Typography ---------- */
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 12px;
     }
 
-    .avatar{
-      width:92px;
-      height:92px;
-      border-radius:999px;
-      background: var(--profile) center/cover no-repeat;
-      border:2px solid #fff;
+    h1 {
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
-    .brand{
-      font-weight:950;
-      font-size:24px;
-      color:#fff;
+    h2 {
+      font-size: clamp(24px, 4vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
-    .heroRole{
-      font-size:14px;
-      font-weight:900;
-      color:#fff;
+    h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
-    .heroSig{
-      font-size:13px;
-      font-weight:700;
-      color:rgba(255,255,255,.85);
+    p {
+      font-size: 16px;
+      color: var(--text);
     }
 
-    .availability{
-      margin-top:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      background: linear-gradient(135deg, rgba(25,196,163,.22), rgba(18,166,135,.16));
-      border:1px solid rgba(25,196,163,.28);
-      font-size:13px;
-      font-weight:900;
-      color:#fff;
+    .muted {
+      color: var(--muted);
     }
 
-    .waCta{
-      margin-top:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      background:#fff;
-      color:#000;
-      font-weight:900;
-      text-decoration:none;
+    /* ---------- Hero ---------- */
+    .hero {
+      padding-top: 80px;
+      padding-bottom: 96px;
     }
 
-    .card{
-      background:var(--ui);
-      border-radius:var(--r);
-      box-shadow:var(--shadow-card);
-      margin-top:14px;
-      overflow:hidden;
+    .hero p {
+      margin-top: 20px;
+      max-width: 640px;
+      font-size: 17px;
     }
 
-    .cardHead{
-      padding:16px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+    /* ---------- Buttons ---------- */
+    .cta {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
     }
 
-    .cardTitle{
-      font-weight:950;
-      font-size:17px;
+    .cta.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
     }
 
-    .cardBody{
-      padding:0 16px 16px;
+    /* ---------- Grids ---------- */
+    .grid-2 {
+      display: grid;
+      gap: 40px;
     }
 
-    .muted{
-      color:var(--muted);
-      font-size:13px;
+    @media (min-width: 720px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+      }
     }
 
-    ul{
-      padding-left:18px;
-      margin:10px 0 0;
+    /* ---------- Trust block ---------- */
+    .trust-item {
+      margin-top: 20px;
     }
 
-    li{ margin:8px 0; }
-
-    .inactive{
-      opacity:.6;
+    .trust-item strong {
+      display: block;
+      font-weight: 700;
     }
 
-    .badge{
-      font-size:12px;
-      font-weight:900;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(0,0,0,.06);
-    }
-
-    .foot{
-      text-align:center;
-      font-size:12px;
-      color:rgba(255,255,255,.55);
-      margin-top:16px;
+    /* ---------- Footer ---------- */
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 120px;
+      padding: 40px 20px;
     }
   </style>
 </head>
 
 <body>
-<div class="stage">
-  <div class="phone">
-    <div class="screen">
 
-      <!-- HEADER -->
-      <header class="top">
-        <div class="avatar"></div>
-        <div class="brand">brunu_uncut_travel</div>
-        <div class="heroRole">Travel Leader & UGC Creator</div>
-        <div class="heroSig">Turning travel into experiences</div>
-        <div class="availability">Available as a Travel Leader for families &amp; groups</div>
-        <a class="waCta" href="https://api.whatsapp.com/send?phone=351963623430" target="_blank">Contact me</a>
-      </header>
+  <!-- HERO -->
+  <header class="container hero">
+    <h1>Travel Leader &amp; UGC Creator</h1>
+    <p class="muted">Turning travel into meaningful experiences</p>
 
-      <!-- ABOUT -->
-      <section class="card">
-        <div class="cardHead">
-          <div class="cardTitle">About</div>
-        </div>
-        <div class="cardBody">
-          <ul>
-            <li>Background in Tech Product Management</li>
-            <li>
-              Guided trips for families &amp; small groups
-              <span class="muted">(Asia, Europe, Morocco, America)</span>
-            </li>
-            <li>Content creation for hotels, brands &amp; travel experiences</li>
-          </ul>
-          <div class="muted" style="margin-top:10px">
-            For group trips &amp; brand collaborations, send a DM.
-          </div>
-        </div>
-      </section>
+    <p>
+      I help people and brands experience travel with more clarity, ease, and purpose — from guided trips to thoughtful travel content.
+    </p>
 
-      <!-- RECENTLY FEATURED -->
-      <section class="card">
-        <div class="cardHead">
-          <div class="cardTitle">Recently featured in social</div>
-        </div>
-        <div class="cardBody">
-          <ul>
-            <li>
-              <strong>Riia Recursos Humanos</strong><br>
-              <span class="muted">Career coaching and CV creation</span><br>
-              <a class="muted" href="https://www.instagram.com/riia.rh/" target="_blank">instagram.com/riia.rh</a>
-            </li>
-            <li>
-              <strong>Viagens Rainho</strong><br>
-              <span class="muted">Consultor de viagens</span><br>
-              <a class="muted" href="https://www.instagram.com/viagens.rainho/" target="_blank">instagram.com/viagens.rainho</a>
-            </li>
-          </ul>
-        </div>
-      </section>
+    <a href="#" class="cta">Contact me</a>
+  </header>
 
-      <!-- GROUP TRAVEL -->
-      <section class="card inactive">
-        <div class="cardHead">
-          <div class="cardTitle">Group travel</div>
-          <div class="badge">COMING SOON</div>
-        </div>
-      </section>
+  <!-- WHO YOU HELP -->
+  <section class="container">
+    <div class="eyebrow">Who you help</div>
 
-      <!-- TRAVEL GUIDES -->
-      <section class="card inactive">
-        <div class="cardHead">
-          <div class="cardTitle">Travel guides</div>
-          <div class="badge">COMING SOON</div>
-        </div>
-      </section>
+    <div class="grid-2">
+      <div>
+        <h3>Families &amp; small groups</h3>
+        <p class="muted">
+          For families and small groups who want well-planned trips, clear guidance, and someone they can trust on the ground — without stress or guesswork.
+        </p>
+      </div>
 
-      <div class="foot">© <span id="y"></span> brunu_uncut_travel</div>
-
+      <div>
+        <h3>Brands &amp; partners</h3>
+        <p class="muted">
+          For hotels, agencies, and travel brands looking for authentic content and collaboration with someone who understands both travel and people.
+        </p>
+      </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<script>
-  document.getElementById('y').textContent = new Date().getFullYear();
-</script>
+  <!-- WHAT YOU OFFER -->
+  <section class="container soft">
+    <div class="container">
+      <div class="eyebrow">What you offer</div>
+
+      <div class="grid-2">
+        <div>
+          <h3>Travel leadership</h3>
+          <p class="muted">
+            I lead guided trips for families and small groups across Asia, Europe, Morocco, and America — focusing on smooth logistics, local context, and real experiences.
+          </p>
+        </div>
+
+        <div>
+          <h3>UGC &amp; content creation</h3>
+          <p class="muted">
+            I create travel content for hotels, brands, and experiences that value quality, storytelling, and long-term trust over short-term hype.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="container">
+    <div class="eyebrow">Trust</div>
+
+    <div class="trust-item">
+      <h3>Recently featured in social</h3>
+      <strong>Riia Recursos Humanos</strong>
+      <span class="muted">Career coaching and CV creation</span>
+    </div>
+
+    <div class="trust-item" style="margin-top:40px;">
+      <h3>Experience snapshot</h3>
+      <p class="muted">
+        Background in Tech Product Management, with a strong focus on structure, clarity, and people-centered experiences — applied today to travel leadership and content creation.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECONDARY CTA -->
+  <section class="container soft">
+    <div class="container">
+      <p>
+        If you’re looking for guided travel, thoughtful collaboration, or a reliable partner in travel experiences, feel free to reach out.
+      </p>
+
+      <a href="#" class="cta secondary">Contact me</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <!-- Minimal footer — no copy -->
+  </footer>
+
 </body>
 </html>
