@@ -1,446 +1,273 @@
-<!-- FILE: index.html  |  Brunu Travel BIO (RESET v2 - globe photo look) -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Brunu Travel — Travel Leader & Content Creator." />
   <title>Brunu Travel</title>
+  <meta name="description" content="Brunu Travel — Travel Leader & Content Creator." />
 
   <style>
     :root{
-      --text: rgba(10,10,14,.92);
-      --muted: rgba(10,10,14,.62);
-      --line: rgba(10,10,14,.10);
+      --text:#0b0b0f;
+      --muted:rgba(11,11,15,.62);
+      --line:rgba(11,11,15,.10);
 
-      --glass: rgba(255,255,255,.58);
-      --glass2: rgba(255,255,255,.45);
+      --glass:rgba(255,255,255,.65);
+      --glass-soft:rgba(255,255,255,.45);
 
-      --shadow: 0 28px 80px rgba(0,0,0,.18);
-      --radius: 26px;
-      --radiusSm: 16px;
+      --shadow:0 28px 80px rgba(0,0,0,.18);
+      --radius:24px;
 
-      --wa: #25D366;
-      --max: 820px;
+      --wa:#25D366;
+      --max:720px;
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;}
     body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color: var(--text);
-      background: #f3f4f6;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text);
+      background:#f3f4f6;
     }
 
-    a{ color: inherit; text-decoration:none; }
-    a:focus-visible, button:focus-visible{
-      outline: 3px solid rgba(0,0,0,.12);
-      outline-offset: 3px;
-      border-radius: 999px;
-    }
-
-    .wrap{
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      padding: 0 16px 110px;
-    }
-
-    .page{
-      width:100%;
-      max-width: var(--max);
-      text-align:center;
-    }
-
-    /* HERO with Earth photo background */
+    /* ---------- HERO ---------- */
     .hero{
-      position: relative;
-      height: 320px;
+      position:relative;
+      height:300px;
       display:flex;
       align-items:flex-start;
       justify-content:center;
-      padding-top: 34px;
+      padding-top:36px;
       overflow:hidden;
-      border-bottom-left-radius: 34px;
-      border-bottom-right-radius: 34px;
-      background: #eef1f6;
     }
-
-    /* Put your globe photo here */
     .hero::before{
       content:"";
       position:absolute;
-      inset:-40px -40px 0 -40px;
-      background-image: url("earth.jpg");
-      background-size: cover;
-      background-position: 50% 35%;
-      filter: saturate(1.05) contrast(1.02);
-      transform: translateZ(0);
+      inset:-40px;
+      background:url("earth.jpg") center 35% / cover no-repeat;
+      filter:saturate(1.05) contrast(1.02);
     }
-
-    /* soft white haze (like your reference) */
     .hero::after{
       content:"";
       position:absolute;
       inset:0;
       background:
-        radial-gradient(900px 500px at 70% 20%, rgba(255,255,255,.55), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.80) 55%, rgba(243,244,246,1) 100%);
-      pointer-events:none;
+        radial-gradient(800px 400px at 70% 20%, rgba(255,255,255,.55), transparent 60%),
+        linear-gradient(to bottom, rgba(255,255,255,.55), rgba(243,244,246,1));
     }
-
-    .heroInner{
+    .hero h1{
       position:relative;
-      z-index: 2;
-      width:100%;
-      max-width: var(--max);
+      font-size:40px;
+      font-weight:500;
+      letter-spacing:-0.02em;
+      color:rgba(0,0,0,.75);
+      z-index:1;
+      margin:0;
     }
 
-    .brandTop{
-      margin: 0;
-      font-weight: 500;         /* light like reference */
-      letter-spacing: -0.02em;
-      font-size: 46px;
-      line-height: 1.05;
-      color: rgba(0,0,0,.78);
-      text-shadow: 0 1px 0 rgba(255,255,255,.5);
-    }
-
-    /* Avatar overlaps hero + card */
-    .avatarWrap{
-      position: relative;
-      z-index: 3;
-      margin-top: -64px; /* pull upward into the hero */
+    /* ---------- AVATAR ---------- */
+    .avatar-wrap{
       display:flex;
       justify-content:center;
+      margin-top:-60px;
+      position:relative;
+      z-index:2;
     }
-
     .avatar{
-      width: 140px;
-      height: 140px;
-      border-radius: 999px;
-      object-fit: cover;
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      object-fit:cover;
       background:#fff;
-      border: 6px solid rgba(255,255,255,.65);
-      box-shadow: 0 18px 50px rgba(0,0,0,.18);
+      border:6px solid rgba(255,255,255,.7);
+      box-shadow:0 18px 50px rgba(0,0,0,.18);
     }
 
-    /* Glass card */
+    /* ---------- PAGE ---------- */
+    .page{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 16px 80px;
+      text-align:center;
+    }
+
+    /* ---------- SOCIAL ---------- */
+    .social{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin:18px 0 20px;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+    }
+    .pill{
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.6);
+      border:1px solid var(--line);
+      font-size:13px;
+      color:rgba(0,0,0,.7);
+      white-space:nowrap;
+      text-decoration:none;
+    }
+
+    /* ---------- CARD ---------- */
     .card{
-      position: relative;
-      margin: -36px auto 0; /* overlap under avatar */
-      width: 100%;
-      max-width: 720px;
-      background: var(--glass);
-      border: 1px solid rgba(255,255,255,.55);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      position:relative;
+      background:var(--glass);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      border:1px solid rgba(255,255,255,.6);
       overflow:hidden;
       text-align:left;
     }
 
-    .cardInner{
-      padding: 28px 26px 18px;
+    /* very subtle globe echo inside card */
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-60px;
+      background:url("earth.jpg") center 30% / 120% no-repeat;
+      opacity:.08;
+      pointer-events:none;
     }
 
-    .cardTitle{
-      margin: 6px 0 10px;
-      font-weight: 550;
-      letter-spacing: -0.02em;
-      font-size: 44px;
-      line-height: 1.05;
-      color: rgba(0,0,0,.76);
-      text-align:center;
+    .card-inner{
+      position:relative;
+      padding:22px 22px 18px;
     }
 
-    .sectionTitle{
-      margin: 18px 0 10px;
-      font-size: 26px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      color: rgba(0,0,0,.78);
-    }
-
-    .sub{
-      margin: 6px 0 14px;
-      text-align:center;
-      font-size: 22px;
-      font-weight: 450;
-      letter-spacing: -0.01em;
-      color: rgba(0,0,0,.70);
+    .role{
+      font-size:16px;
+      font-weight:600;
+      margin:2px 0 10px;
     }
 
     .bullets{
-      margin: 0;
-      padding-left: 22px;
-      color: rgba(0,0,0,.70);
-      font-size: 18px;
-      line-height: 1.55;
+      margin:0;
+      padding-left:18px;
+      font-size:15px;
+      line-height:1.4;
     }
-    .bullets li{ margin: 10px 0; }
+    .bullets li{margin:8px 0;}
 
-    .ctaRow{
+    /* ---------- CTA ---------- */
+    .cta{
       display:flex;
       justify-content:center;
-      margin: 18px 0 10px;
+      margin:16px 0 10px;
     }
-
-    .btnWa{
+    .btn-wa{
       display:inline-flex;
       align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 16px 24px;
-      border-radius: 999px;
-      background: rgba(15,95,80,.75); /* closer to your reference button tint */
-      color: rgba(255,255,255,.92);
-      font-size: 22px;
-      font-weight: 600;
-      border: 1px solid rgba(255,255,255,.22);
-      box-shadow: 0 18px 40px rgba(0,0,0,.16);
-      text-decoration:none !important;
-      transition: transform .12s ease, filter .12s ease;
-      cursor:pointer;
-    }
-    .btnWa:hover{ transform: translateY(-1px); filter: brightness(1.02); }
-    .btnWa:active{ transform: translateY(0); }
-
-    .waIcon{
-      width: 20px;
-      height: 20px;
-      display:block;
-      flex: 0 0 auto;
+      gap:8px;
+      padding:12px 18px;
+      border-radius:999px;
+      background:var(--wa);
+      color:#062112;
+      font-weight:700;
+      font-size:14px;
+      text-decoration:none;
+      box-shadow:0 14px 30px rgba(0,0,0,.18);
     }
 
     .divider{
-      height: 1px;
-      background: rgba(0,0,0,.10);
-      margin: 18px 0;
+      height:1px;
+      background:var(--line);
+      margin:14px 0;
     }
 
-    /* Featured list (simple, like reference with chevrons) */
-    .featuredRow{
+    /* ---------- FEATURED ---------- */
+    .featured-title{
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+    .feat{
       display:flex;
       flex-direction:column;
-      gap: 14px;
-      margin-top: 8px;
+      gap:10px;
     }
-
-    .featItem{
+    .feat a{
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap: 14px;
-      padding: 14px 14px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.50);
-      border: 1px solid rgba(255,255,255,.45);
-    }
-
-    .featName{
-      font-size: 20px;
-      font-weight: 560;
-      color: rgba(0,0,0,.76);
-      margin:0;
-    }
-
-    .chev{
-      font-size: 26px;
-      line-height: 1;
-      color: rgba(0,0,0,.35);
-      padding-left: 10px;
-      user-select:none;
-    }
-
-    /* Optional social row (kept minimal) */
-    .social{
-      display:flex;
-      justify-content:center;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding: 14px 0 0;
-    }
-    .pill{
-      display:inline-flex;
       align-items:center;
-      gap: 8px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.55);
-      border: 1px solid rgba(255,255,255,.45);
-      color: rgba(0,0,0,.72);
-      font-size: 14px;
-      text-decoration:none !important;
+      padding:12px;
+      border-radius:16px;
+      background:var(--glass-soft);
+      border:1px solid var(--line);
+      text-decoration:none;
+      color:rgba(0,0,0,.75);
+      font-size:14px;
     }
 
-    .footer{
+    footer{
       text-align:center;
-      color: rgba(0,0,0,.40);
-      padding: 18px 0 0;
-      font-size: 18px;
-    }
-
-    /* Cookie banner (minimal) */
-    .cookie{
-      position: fixed;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      margin: 0 auto;
-      max-width: 720px;
-      background: rgba(255,255,255,.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(0,0,0,.10);
-      box-shadow: 0 22px 70px rgba(0,0,0,.18);
-      border-radius: 18px;
-      padding: 14px 14px;
-      display:none;
-      gap: 12px;
-      align-items:center;
-      justify-content: space-between;
-      z-index: 999;
-    }
-    .cookie p{
-      margin:0;
-      font-size: 13px;
-      color: rgba(11,11,15,.76);
-      line-height: 1.25;
-    }
-    .cookieActions{
-      display:flex;
-      gap: 8px;
-      flex: 0 0 auto;
-    }
-    .btnSm{
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 650;
-      border: 1px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.68);
-      cursor:pointer;
-    }
-    .btnSm.primary{
-      background: #111113;
-      color: #fff;
-      border-color: rgba(255,255,255,.10);
-    }
-
-    @media (max-width: 520px){
-      .hero{ height: 300px; padding-top: 28px; }
-      .brandTop{ font-size: 40px; }
-      .avatar{ width: 130px; height: 130px; }
-      .cardTitle{ font-size: 38px; }
-      .sectionTitle{ font-size: 24px; }
-      .sub{ font-size: 20px; }
-      .bullets{ font-size: 17px; }
-      .btnWa{ font-size: 20px; padding: 14px 22px; }
-      .featName{ font-size: 18px; }
-      .footer{ font-size: 16px; }
-      .cookie{ flex-direction: column; align-items: flex-start; }
-      .cookieActions{ width:100%; }
-      .cookieActions button{ flex:1; }
+      margin-top:14px;
+      font-size:13px;
+      color:rgba(0,0,0,.4);
     }
   </style>
 </head>
 
 <body>
-  <main class="wrap">
-    <div class="page">
 
-      <section class="hero" aria-label="Hero">
-        <div class="heroInner">
-          <h1 class="brandTop">Brunu Travel</h1>
-        </div>
-      </section>
+  <section class="hero">
+    <h1>Brunu Travel</h1>
+  </section>
 
-      <div class="avatarWrap">
-        <img class="avatar" src="profile.jpg" alt="Brunu Travel profile photo">
-      </div>
-
-      <section class="card" aria-label="Main card">
-        <div class="cardInner">
-
-          <h2 class="cardTitle">Brunu Travel</h2>
-
-          <div class="sectionTitle">About</div>
-          <div class="sub">Travel Leader &amp; Content Creator</div>
-
-          <ul class="bullets">
-            <li>Planned and led trips for groups &amp; families</li>
-            <li>Content creation for Products &amp; Experiences</li>
-          </ul>
-
-          <div class="ctaRow">
-            <a class="btnWa" href="https://wa.me/351963623430" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">
-              <svg class="waIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M20 11.6a7.8 7.8 0 0 1-11.8 6.8L4 19.8l1.5-3.9A7.8 7.8 0 1 1 20 11.6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-                <path d="M9.4 8.9c.3-.6.6-.6.9-.6h.8c.2 0 .4 0 .6.5l.7 1.7c.1.3.1.6-.1.8l-.5.5c-.2.2-.1.6.1.8.6.9 1.4 1.7 2.3 2.2.3.2.6.2.8 0l.7-.7c.2-.2.5-.2.8-.1l1.7.8c.4.2.4.5.4.7 0 .4-.2 1.1-.6 1.4-.5.4-1.2.6-1.7.6-1 0-3.6-.8-5.8-3-2.2-2.2-3-4.7-3-5.8 0-.6.1-1.2.5-1.7Z" fill="currentColor"/>
-              </svg>
-              Contact via Whatsapp
-            </a>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="sectionTitle">Featured</div>
-          <div class="featuredRow">
-            <a class="featItem" href="https://instagram.com/riia.rh" target="_blank" rel="noopener noreferrer" aria-label="Riia Recursos Humanos">
-              <p class="featName">Riia Recursos Humanos</p>
-              <span class="chev">›</span>
-            </a>
-
-            <a class="featItem" href="https://instagram.com/viagens.rainho" target="_blank" rel="noopener noreferrer" aria-label="Viagens Rainho">
-              <p class="featName">Viagens Rainho</p>
-              <span class="chev">›</span>
-            </a>
-          </div>
-
-          <nav class="social" aria-label="Social links">
-            <a class="pill" href="https://www.instagram.com/brunu_uncut_travel/" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a class="pill" href="https://www.facebook.com/profile.php?id=61586558676697" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a class="pill" href="https://www.tiktok.com/@brunu_uncut_travel" target="_blank" rel="noopener noreferrer">TikTok</a>
-            <a class="pill" href="https://www.youtube.com/@brunu_uncut_travel" target="_blank" rel="noopener noreferrer">YouTube</a>
-          </nav>
-
-          <div class="footer">© <span id="year"></span> Brunu Travel</div>
-        </div>
-      </section>
-
-    </div>
-  </main>
-
-  <div class="cookie" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-    <p>
-      This site uses essential cookies to improve the experience. By clicking “Accept”, you agree to their use.
-    </p>
-    <div class="cookieActions">
-      <button class="btnSm" id="cookieDecline" type="button">Decline</button>
-      <button class="btnSm primary" id="cookieAccept" type="button">Accept</button>
-    </div>
+  <div class="avatar-wrap">
+    <img src="profile.jpg" alt="Brunu Travel" class="avatar">
   </div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+  <main class="page">
 
-    const KEY = "brunu_cookie_consent_v1";
-    const banner = document.getElementById("cookieBanner");
-    const acceptBtn = document.getElementById("cookieAccept");
-    const declineBtn = document.getElementById("cookieDecline");
+    <nav class="social">
+      <a class="pill" href="https://www.instagram.com/brunu_uncut_travel/" target="_blank">Instagram</a>
+      <a class="pill" href="https://www.facebook.com/profile.php?id=61586558676697" target="_blank">Facebook</a>
+      <a class="pill" href="https://www.tiktok.com/@brunu_uncut_travel" target="_blank">TikTok</a>
+      <a class="pill" href="https://www.youtube.com/@brunu_uncut_travel" target="_blank">YouTube</a>
+    </nav>
 
-    const existing = localStorage.getItem(KEY);
-    if (!existing) banner.style.display = "flex";
+    <section class="card">
+      <div class="card-inner">
 
-    function setConsent(value){
-      localStorage.setItem(KEY, value);
-      banner.style.display = "none";
-    }
-    acceptBtn.addEventListener("click", () => setConsent("accepted"));
-    declineBtn.addEventListener("click", () => setConsent("declined"));
-  </script>
+        <div class="role">Travel Leader &amp; Content Creator</div>
+
+        <ul class="bullets">
+          <li>Planned and led trips for groups &amp; families</li>
+          <li>Content creation for Products &amp; Experiences</li>
+          <li>Background in Tech Product Management</li>
+        </ul>
+
+        <div class="cta">
+          <a class="btn-wa" href="https://wa.me/351963623430" target="_blank">
+            Contact via WhatsApp
+          </a>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="featured-title">Featured</div>
+        <div class="feat">
+          <a href="https://instagram.com/riia.rh" target="_blank">
+            Riia Recursos Humanos <span>›</span>
+          </a>
+          <a href="https://instagram.com/viagens.rainho" target="_blank">
+            Viagens Rainho <span>›</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>© 2026 Brunu Travel</footer>
+
+  </main>
+
 </body>
 </html>
